@@ -10,13 +10,12 @@ import {AuthorService} from "../author.service";
 })
 export class AuthorFormComponent {
 
-  author: Author;
+  author: Author = new Author();
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authorService: AuthorService) {
-    this.author = new Author();
   }
 
   onSubmit(){

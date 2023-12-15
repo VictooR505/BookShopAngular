@@ -7,11 +7,13 @@ import {AuthorEditComponent} from "./author/author-edit/author-edit.component";
 import {GenreListComponent} from "./genre/genre-list/genre-list.component";
 import {GenreEditComponent} from "./genre/genre-edit/genre-edit.component";
 import {GenreFormComponent} from "./genre/genre-form/genre-form.component";
+import {BookFormComponent} from "./book/book-form/book-form.component";
 
 const routes: Routes = [
   { path: 'books', component: BookListComponent},
   { path: 'authors', component: AuthorListComponent},
   { path: 'genres', component: GenreListComponent},
+  { path: 'addbook', component: BookFormComponent},
   { path: 'addauthor', component: AuthorFormComponent},
   { path: 'addgenre', component: GenreFormComponent},
   { path: 'editauthor', component: AuthorEditComponent},

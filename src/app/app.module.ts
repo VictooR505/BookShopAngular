@@ -14,6 +14,8 @@ import { AuthorEditComponent } from './author/author-edit/author-edit.component'
 import { GenreListComponent } from './genre/genre-list/genre-list.component';
 import { GenreFormComponent } from './genre/genre-form/genre-form.component';
 import { GenreEditComponent } from './genre/genre-edit/genre-edit.component';
+import { BookFormComponent } from './book/book-form/book-form.component';
+import { BookEditComponent } from './book/book-edit/book-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { GenreEditComponent } from './genre/genre-edit/genre-edit.component';
     AuthorEditComponent,
     GenreListComponent,
     GenreFormComponent,
-    GenreEditComponent
+    GenreEditComponent,
+    BookFormComponent,
+    BookEditComponent
   ],
   imports: [
     BrowserModule,
