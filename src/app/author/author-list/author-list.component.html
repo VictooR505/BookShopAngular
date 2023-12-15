@@ -1,0 +1,20 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let author of authors">
+        <td>{{ author.id }}</td>
+        <td>{{ author.name }}</td>
+        <td> <button (click)="deleteAuthor(author.id!)"> Remove</button></td>
+        <td> <button routerLink="/editauthor" [queryParams]="{authorId: author.id}"> Update</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let genre of genres">
+        <td>{{ genre.id }}</td>
+        <td>{{ genre.name }}</td>
+        <td> <button (click)="deleteGenre(genre.id!)"> Remove</button></td>
+        <td> <button routerLink="/editgenre" [queryParams]="{genreId: genre.id}"> Update</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

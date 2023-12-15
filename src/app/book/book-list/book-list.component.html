@@ -1,0 +1,27 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Author</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Price</th>
+        <th scope="col">Count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.id }}</td>
+        <td>{{ book.author?.name }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.genre?.name }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.count }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
