@@ -1,45 +1,23 @@
 <div class="card my-5">
-    <div class="card-body">
-        <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
-            <div class="form-group">
-                <label for="authorid">Author</label>
-                <input type="text" [(ngModel)]="book.author.id"
-                       class="form-control"
-                       id="authorid"
-                       name="authorid"
-                       placeholder="Enter author id"
-                       required #name="ngModel">
-                <label for="title">Title</label>
-                <input type="text" [(ngModel)]="book.title!"
-                       class="form-control"
-                       id="title"
-                       name="title"
-                       placeholder="Enter title"
-                       required #name="ngModel">
-                <label for="genreid">Genre</label>
-                <input type="text" [(ngModel)]="book.genre.id"
-                       class="form-control"
-                       id="genreid"
-                       name="genreid"
-                       placeholder="Enter genre id"
-                       required #name="ngModel">
-                <label for="price">Price</label>
-                <input type="text" [(ngModel)]="book.price"
-                       class="form-control"
-                       id="price"
-                       name="price"
-                       placeholder="Enter price"
-                       required #name="ngModel">
-                <label for="count">Count</label>
-                <input type="text" [(ngModel)]="book.count"
-                       class="form-control"
-                       id="count"
-                       name="count"
-                       placeholder="Enter count"
-                       required #name="ngModel">
-            </div>
-            <button type="submit" [disabled]="!bookForm.form.valid"
-                    class="btn btn-info">Submit</button>
-        </form>
-    </div>
+  <div class="card-body">
+    <form [formGroup]="bookForm" (ngSubmit)="confirm()">
+      <div class="book-form d-flex flex-column">
+        <label for="author">Author</label>
+        <input type="number" formControlName="author" placeholder="Enter author id">
+
+        <label for="title">Title</label>
+        <input type="text" formControlName="title" placeholder="Enter title">
+
+        <label for="genre">Genre</label>
+        <input type="number" formControlName="genre" placeholder="Enter genre id">
+
+        <label for="price">Price</label>
+        <input type="number" formControlName="price" placeholder="Enter price">
+
+        <label for="count">Count</label>
+        <input type="number" formControlName="count" placeholder="Enter count">
+      </div>
+      <button type="submit" [disabled]="bookForm.invalid" class="mt-4 btn btn-info">Submit</button>
+    </form>
+  </div>
 </div>
