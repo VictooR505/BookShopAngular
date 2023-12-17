@@ -1,21 +1,35 @@
 <div class="card my-5">
-  <div class="card-body">
+  <div *ngIf="(optionsData$ | async) as optionsData" class="card-body">
     <form [formGroup]="bookForm" (ngSubmit)="confirm()">
       <div class="book-form d-flex flex-column">
-        <label for="author">Author</label>
-        <input type="number" formControlName="author" placeholder="Enter author id">
+        <mat-form-field class="example-full-width">
+          <mat-label>Author</mat-label>
+          <mat-select formControlName="author" placeholder="Select Author">
+            <mat-option *ngFor="let author of optionsData.authors" [value]="author.id">{{ author.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <label for="title">Title</label>
-        <input type="text" formControlName="title" placeholder="Enter title">
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" formControlName="title" placeholder="Enter title">
+        </mat-form-field>
 
-        <label for="genre">Genre</label>
-        <input type="number" formControlName="genre" placeholder="Enter genre id">
+        <mat-form-field class="example-full-width">
+          <mat-label>Genre</mat-label>
+          <mat-select formControlName="genre" placeholder="Select Genre">
+            <mat-option *ngFor="let genre of optionsData.genres" [value]="genre.id">{{ genre.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <label for="price">Price</label>
-        <input type="number" formControlName="price" placeholder="Enter price">
+        <mat-form-field class="example-full-width">
+          <mat-label>Price</mat-label>
+          <input matInput type="number" formControlName="price" placeholder="Enter price">
+        </mat-form-field>
 
-        <label for="count">Count</label>
-        <input type="number" formControlName="count" placeholder="Enter count">
+        <mat-form-field class="example-full-width">
+          <mat-label>Count</mat-label>
+          <input matInput type="number" formControlName="count" placeholder="Enter count">
+        </mat-form-field>
       </div>
       <button type="submit" [disabled]="bookForm.invalid" class="mt-4 btn btn-info">Submit</button>
     </form>

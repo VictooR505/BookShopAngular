@@ -1,10 +1,11 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from "@angular/common/http";
-import { Book, BookCreateDto} from "./book";
-import {map, Observable} from "rxjs";
-import {Author} from "../author/author";
+import { Observable, map } from "rxjs";
+import { Book, BookCreateDto } from "./book";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BookService {
 
   private bookUrl: string;

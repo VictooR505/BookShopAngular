@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, forkJoin } from 'rxjs';
+import { Author } from 'src/app/author/author';
+import { AuthorService } from 'src/app/author/author.service';
+import { Genre } from 'src/app/genre/genre';
+import { GenreService } from 'src/app/genre/genre.service';
 import { BookCreateDto } from '../book';
 import { BookService } from "../book.service";
 
@@ -13,20 +17,31 @@ import { BookService } from "../book.service";
 export class BookFormComponent implements OnInit, OnDestroy {
 
   private readonly subscription = new Subscription();
+  public readonly optionsData$ = this.fetchOptionsData();
   public bookForm!: FormGroup;
 
   constructor(
       private router: Router,
       private bookService: BookService,
+      private authorService: AuthorService,
+      private genreService: GenreService,
       private fb: FormBuilder) {
   }
 
   public ngOnInit(): void {
     this.initForm();
+    this.fetchOptionsData();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private fetchOptionsData(): Observable<{authors: Author[], genres: Genre[]}> {
+    return forkJoin({
+      authors: this.authorService.authorList(),
+      genres: this.genreService.genreList()
+    });
   }
 
   private initForm(): void {
