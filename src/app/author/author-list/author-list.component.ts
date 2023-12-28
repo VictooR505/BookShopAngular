@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Author} from "../author";
 import {AuthorService} from "../author.service";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-author-list',
