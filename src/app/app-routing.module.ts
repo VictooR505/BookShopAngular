@@ -8,6 +8,9 @@ import {GenreListComponent} from "./genre/genre-list/genre-list.component";
 import {GenreEditComponent} from "./genre/genre-edit/genre-edit.component";
 import {GenreFormComponent} from "./genre/genre-form/genre-form.component";
 import {BookFormComponent} from "./book/book-form/book-form.component";
+import {BookEditComponent} from "./book/book-edit/book-edit.component";
+import {SignupComponent} from "./signup/signup.component";
+import {LoginComponent} from "./login/login/login.component";
 
 const routes: Routes = [
   { path: 'books', component: BookListComponent},
@@ -16,8 +19,12 @@ const routes: Routes = [
   { path: 'addbook', component: BookFormComponent},
   { path: 'addauthor', component: AuthorFormComponent},
   { path: 'addgenre', component: GenreFormComponent},
+  { path: 'editbook', component: BookEditComponent},
   { path: 'editauthor', component: AuthorEditComponent},
-  { path: 'editgenre', component: GenreEditComponent}
+  { path: 'editgenre', component: GenreEditComponent},
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent }
 ];
 
 @NgModule({

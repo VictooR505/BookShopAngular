@@ -14,7 +14,9 @@ export class BookService {
     this.bookUrl = 'http://localhost:8080/books';
   }
   public bookList(): Observable<Book[]> {
-    return this.http.get(this.bookUrl).pipe(map((data: any) => data.content));
+    return this.http.get(this.bookUrl, {
+      headers: this.createAuthorizationHeader()
+    }).pipe(map((data: any) => data.content));
   }
 
   public addBook(bookCreateDto: BookCreateDto){
@@ -27,5 +29,17 @@ export class BookService {
 
   updateBook(id: number, bookDTO: any): Observable<void> {
     return this.http.patch<void>(`${this.bookUrl}/id/${id}`,bookDTO);
+  }
+
+  private createAuthorizationHeader() {
+    const jwtToken = localStorage.getItem('JWT');
+    if (jwtToken) {
+      return new HttpHeaders().set(
+          'Authorization', 'Bearer ' + jwtToken
+      )
+    } else {
+      console.log("JWT token not found in the Local Storage");
+      return new HttpHeaders().set("","");
+    }
   }
 }

@@ -16,6 +16,8 @@ import { GenreListComponent } from './genre/genre-list/genre-list.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookFormModule } from './book/book-form/book-form.module';
+import { LoginComponent } from './login/login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { BookFormModule } from './book/book-form/book-form.module';
     GenreListComponent,
     GenreFormComponent,
     GenreEditComponent,
-    BookEditComponent
+    BookEditComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

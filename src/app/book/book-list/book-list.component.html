@@ -9,6 +9,8 @@
         <th scope="col">Genre</th>
         <th scope="col">Price</th>
         <th scope="col">Count</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
@@ -19,6 +21,8 @@
         <td>{{ book.genre?.name }}</td>
         <td>{{ book.price }}</td>
         <td>{{ book.count }}</td>
+        <td> <button (click)="deleteBook(book.id!)"> Remove</button></td>
+        <td> <button routerLink="/editbook" [queryParams]="{bookId: book.id}"> Update</button></td>
       </tr>
       </tbody>
     </table>
