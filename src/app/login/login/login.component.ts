@@ -13,21 +13,22 @@ export class LoginComponent {
   loginForm!: FormGroup;
 
   constructor(
-    private service: AuthService,
+    private authService: AuthService,
     private fb: FormBuilder,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
+      // Umieszczaj w tablicy jeśli masz wiele walidatorów, bo będzie je*** errorem z każdym inputem :D
       password: ['', Validators.required],
     })
   }
 
   login() {
-    console.log(this.loginForm.value);
-    this.service.login(this.loginForm.value).subscribe((response) => {
+    // Można po stronie backendu zrobić odpowiednie errory aby je można było zwracać w catchError(). Możesz zrobić subskrypcje i porobić ngOnDestroy na nich aby nie było wycieków pamięci. 
+    this.authService.login(this.loginForm.value).subscribe((response) => {
       console.log(response);
       if (response.jwtToken) {
 
@@ -37,5 +38,4 @@ export class LoginComponent {
       }
     })
   }
-
 }

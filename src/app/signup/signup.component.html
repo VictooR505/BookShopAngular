@@ -7,16 +7,17 @@
         <h4 class="admin">SignUp</h4>
       </div>
       <div>
-        <input type="text" name="name" id="name" placeholder="Enter your name" formControlName="name" required/>
+        <input type="text" placeholder="Enter your name" formControlName="name"/>
+<!-- name, id są niepotrzebne, required też - na to masz Validators.required -->
       </div>
       <div>
-        <input type="email" name="email" id="email" placeholder="Enter your email" formControlName="email" required/>
+        <input type="email" placeholder="Enter your email" formControlName="email"/>
       </div>
       <div>
-        <input type="password" name="password" id="password" placeholder="Enter your password" formControlName="password" required/>
+        <input type="password" placeholder="Enter your password" formControlName="password"/>
       </div>
       <div>
-        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Enter your confirm password" formControlName="confirmPassword" required/>
+        <input type="password" placeholder="Enter your confirm password" formControlName="confirmPassword"/>
       </div>
       <div>
         <button class="SignUp" type="button" routerLink="/login">Already Registered ?</button>

@@ -1,7 +1,8 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable, map } from "rxjs";
 import { Book, BookCreateDto } from "./book";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,14 @@ export class BookService {
 
   private bookUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService) {
     this.bookUrl = 'http://localhost:8080/books';
   }
   public bookList(): Observable<Book[]> {
     return this.http.get(this.bookUrl, {
-      headers: this.createAuthorizationHeader()
+      headers: this.authService.createAuthorizationHeader()
     }).pipe(map((data: any) => data.content));
   }
 
@@ -23,23 +26,11 @@ export class BookService {
     return this.http.post(this.bookUrl, bookCreateDto);
   }
 
-  deleteBook(id: number): Observable<void> {
+  public deleteBook(id: number): Observable<void> {
     return this.http.delete<void>(`${this.bookUrl}/id/${id}`);
   }
 
-  updateBook(id: number, bookDTO: any): Observable<void> {
+  public updateBook(id: number, bookDTO: any): Observable<void> {
     return this.http.patch<void>(`${this.bookUrl}/id/${id}`,bookDTO);
-  }
-
-  private createAuthorizationHeader() {
-    const jwtToken = localStorage.getItem('JWT');
-    if (jwtToken) {
-      return new HttpHeaders().set(
-          'Authorization', 'Bearer ' + jwtToken
-      )
-    } else {
-      console.log("JWT token not found in the Local Storage");
-      return new HttpHeaders().set("","");
-    }
   }
 }

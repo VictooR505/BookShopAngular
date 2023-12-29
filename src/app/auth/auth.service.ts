@@ -27,16 +27,16 @@ export class AuthService {
     });
   }*/
 
-  private createAuthorizationHeader() {
+  public createAuthorizationHeader() {
     const jwtToken = localStorage.getItem('JWT');
+    const headers = new HttpHeaders();
     if (jwtToken) {
-      return new HttpHeaders().set(
+      return headers.set(
         'Authorization', 'Bearer ' + jwtToken
       )
-    } else {
-      console.log("JWT token not found in the Local Storage");
     }
-    return null;
+    console.error("JWT token not found in the Local Storage");
+    return headers;
   }
 
 }
