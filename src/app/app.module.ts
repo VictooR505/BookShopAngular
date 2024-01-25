@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorEditComponent } from './author/author-edit/author-edit.component';
@@ -18,6 +18,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookFormModule } from './book/book-form/book-form.module';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {BookEditModule} from "./book/book-edit/book-edit.module";
 
 @NgModule({
   declarations: [
@@ -29,22 +34,23 @@ import { SignupComponent } from './signup/signup.component';
     GenreListComponent,
     GenreFormComponent,
     GenreEditComponent,
-    BookEditComponent,
     LoginComponent,
     SignupComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BookFormModule,
-    BrowserAnimationsModule
-  ],
-  providers: [], // jeśli robisz @Injectable({ providedIn: 'root'}) w serwisie, staje
-                 // się on od razu singletonem i nie trzeba go umieszczać w provider'sach
-                 // jedyne co musisz robić później to tylko DI w komponentach
-                 // na dobrą sprawę można się pozbyć tej tablicy providers ale zostawiam dla referencji
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BookFormModule,
+        BookEditModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule
+    ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

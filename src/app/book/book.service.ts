@@ -23,14 +23,20 @@ export class BookService {
   }
 
   public addBook(bookCreateDto: BookCreateDto){
-    return this.http.post(this.bookUrl, bookCreateDto);
+    return this.http.post(this.bookUrl, bookCreateDto, {
+      headers: this.authService.createAuthorizationHeader()
+    });
   }
 
   public deleteBook(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.bookUrl}/id/${id}`);
+    return this.http.delete<void>(`${this.bookUrl}/id/${id}`, {
+      headers: this.authService.createAuthorizationHeader()
+    });
   }
 
   public updateBook(id: number, bookDTO: any): Observable<void> {
-    return this.http.patch<void>(`${this.bookUrl}/id/${id}`,bookDTO);
+    return this.http.patch<void>(`${this.bookUrl}/id/${id}`,bookDTO, {
+      headers: this.authService.createAuthorizationHeader()
+    });
   }
 }

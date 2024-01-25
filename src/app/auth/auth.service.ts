@@ -21,12 +21,6 @@ export class AuthService {
     return this.http.post(BASE_URL + "authenticate", loginRequest)
   }
 
-/*  hello(): Observable<any> {
-    return this.http.get(BASE_URL + 'api/hello', {
-      headers: this.createAuthorizationHeader()
-    });
-  }*/
-
   public createAuthorizationHeader() {
     const jwtToken = localStorage.getItem('JWT');
     const headers = new HttpHeaders();

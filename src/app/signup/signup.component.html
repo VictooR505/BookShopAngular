@@ -1,14 +1,13 @@
 <div class="form-bg">
 
-  <form [formGroup]="signupForm" class="form">
+  <form [formGroup]="signupForm" class="example-form">
     <div class="box">
 
       <div style="display: flex; margin: 0 auto;">
-        <h4 class="admin">SignUp</h4>
+        <h4 class="admin">Sign Up</h4>
       </div>
       <div>
         <input type="text" placeholder="Enter your name" formControlName="name"/>
-<!-- name, id są niepotrzebne, required też - na to masz Validators.required -->
       </div>
       <div>
         <input type="email" placeholder="Enter your email" formControlName="email"/>
@@ -17,10 +16,7 @@
         <input type="password" placeholder="Enter your password" formControlName="password"/>
       </div>
       <div>
-        <input type="password" placeholder="Enter your confirm password" formControlName="confirmPassword"/>
-      </div>
-      <div>
-        <button class="SignUp" type="button" routerLink="/login">Already Registered ?</button>
+        <input type="password" placeholder="Confirm password" formControlName="confirmPassword"/>
       </div>
 
       <button class="login-button" type="button" [disabled]="signupForm.invalid" (click)="signup()">Signup</button>
